@@ -2,5 +2,5 @@
 2:I[22684,["/periodic-table/_next/static/chunks/158myu8e_yme3.js","/periodic-table/_next/static/chunks/3-ny-trzpobeh.js"],"default"]
 3:I[97367,["/periodic-table/_next/static/chunks/158myu8e_yme3.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/periodic-table/_next/static/chunks/3-ny-trzpobeh.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"44WayOWYt9hOWqY8xTzxA"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/periodic-table/_next/static/chunks/3-ny-trzpobeh.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"9S-Bp__Or4lOZzTXY__Se"}
 5:null
