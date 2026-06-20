@@ -92,7 +92,7 @@ export default function PeriodicTableGrid() {
             <div
               key={key}
               style={{ gridRow: row + HEADER_ROWS, gridColumn: col + LABEL_COL }}
-              className="bg-white/40 border border-slate-200"
+              className="bg-white"
             />,
           )
         }

@@ -22,11 +22,10 @@ export default function ElementCell({ element, isSelected, onClick }: ElementCel
         ${isSelected ? 'z-10' : ''}
       `}
       style={{
-        backgroundColor: isSelected ? bgColor : bgColor,
-        aspectRatio: '0.8',
-        border: isSelected ? '2px solid #1e293b' : '1px solid rgba(255,255,255,0.6)',
+        backgroundColor: bgColor,
+        aspectRatio: '1',
         outline: isSelected ? '3px solid #1e293b' : 'none',
-        outlineOffset: '1px',
+        outlineOffset: '-1px',
       }}
       onClick={() => onClick(element)}
       title={`${element.atomicNumber}. ${element.name} (${element.symbol})`}
