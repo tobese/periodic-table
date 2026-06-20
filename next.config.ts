@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  basePath: "/periodic-table",
+  images: { unoptimized: true },
+  trailingSlash: true,
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 export default nextConfig;
