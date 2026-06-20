@@ -23,8 +23,6 @@ export default function ElementCell({ element, isSelected, onClick }: ElementCel
       `}
       style={{
         backgroundColor: isSelected ? bgColor : bgColor,
-        gridRow: element.gridRow,
-        gridColumn: element.gridCol,
         aspectRatio: '1',
         border: isSelected ? '2px solid #1e293b' : '1px solid rgba(255,255,255,0.5)',
         outline: isSelected ? '3px solid #1e293b' : 'none',

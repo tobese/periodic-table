@@ -87,6 +87,7 @@ export default function PeriodicTableGrid() {
           <div
             key={el.atomicNumber}
             className={filteredSet.has(el.atomicNumber) ? '' : 'opacity-20'}
+            style={{ gridRow: el.gridRow, gridColumn: el.gridCol }}
           >
             <ElementCell
               element={el}
