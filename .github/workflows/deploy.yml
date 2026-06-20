@@ -18,6 +18,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v4
+        id: deploy
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+      - run: echo "Deployed to https://tobese.github.io/periodic-table/"
