@@ -15,24 +15,28 @@ export default function ElementCell({ element, isSelected, onClick }: ElementCel
   return (
     <button
       className={`
-        relative flex flex-col items-center justify-center rounded-md cursor-pointer
-        transition-all duration-150 select-none
-        hover:z-10 hover:scale-110 hover:shadow-lg
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400
-        ${isSelected ? 'z-10 scale-110 shadow-lg ring-2 ring-slate-700' : 'shadow-sm'}
+        relative flex flex-col items-center justify-center cursor-pointer select-none
+        transition-all duration-150
+        hover:z-10
+        focus:outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-slate-500
+        ${isSelected ? 'z-10' : ''}
       `}
       style={{
-        backgroundColor: isSelected ? bgColor : `${bgColor}80`,
+        backgroundColor: isSelected ? bgColor : bgColor,
         gridRow: element.gridRow,
         gridColumn: element.gridCol,
+        aspectRatio: '1',
+        border: isSelected ? '2px solid #1e293b' : '1px solid rgba(255,255,255,0.5)',
+        outline: isSelected ? '3px solid #1e293b' : 'none',
+        outlineOffset: '1px',
       }}
       onClick={() => onClick(element)}
       title={`${element.atomicNumber}. ${element.name} (${element.symbol})`}
     >
-      <span className="text-[9px] font-medium text-slate-700 leading-none opacity-70 absolute top-1 left-1">
+      <span className="text-[10px] font-semibold text-slate-800 leading-none absolute top-[3px] left-[4px] opacity-80">
         {element.atomicNumber}
       </span>
-      <span className="text-sm font-bold text-slate-900 leading-none mt-1">
+      <span className="text-sm font-bold text-slate-900 leading-none mt-px">
         {element.symbol}
       </span>
     </button>

@@ -77,10 +77,10 @@ export default function PeriodicTableGrid() {
       </div>
 
       <div
-        className="grid gap-[2px] w-full"
+        className="grid gap-[1px] w-full"
         style={{
           gridTemplateColumns: 'repeat(18, minmax(0, 1fr))',
-          gridTemplateRows: 'repeat(9, 52px)',
+          gridTemplateRows: 'repeat(9, auto)',
         }}
       >
         {ELEMENTS.map((el) => (

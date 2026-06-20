@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import type { ElementData } from '@/data/elements'
 import { CATEGORY_COLORS, CATEGORY_LABELS, SHELL_LABELS } from '@/data/elements'
 import ElectronShellDiagram from './electron-shell-diagram'
+import ThreeAtomDisplay from './three-atom-display'
 import ReactivityIndicator from './reactivity-indicator'
 
 interface ElementDetailPanelProps {
@@ -10,7 +12,11 @@ interface ElementDetailPanelProps {
   onClose: () => void
 }
 
+type ViewMode = '2d' | '3d'
+
 export default function ElementDetailPanel({ element, onClose }: ElementDetailPanelProps) {
+  const [viewMode, setViewMode] = useState<ViewMode>('3d')
+
   if (!element) return null
 
   const categoryColor = CATEGORY_COLORS[element.category]
@@ -94,8 +100,28 @@ export default function ElementDetailPanel({ element, onClose }: ElementDetailPa
 
           <div className="space-y-6">
             <div>
-              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">Bohr Model</span>
-              <ElectronShellDiagram shells={element.shells} />
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Atom View</span>
+                <div className="flex rounded-md border border-slate-300 overflow-hidden text-xs">
+                  <button
+                    onClick={() => setViewMode('2d')}
+                    className={`px-2 py-0.5 font-medium transition-colors ${viewMode === '2d' ? 'bg-slate-800 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
+                  >
+                    2D
+                  </button>
+                  <button
+                    onClick={() => setViewMode('3d')}
+                    className={`px-2 py-0.5 font-medium transition-colors ${viewMode === '3d' ? 'bg-slate-800 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
+                  >
+                    3D
+                  </button>
+                </div>
+              </div>
+              {viewMode === '3d' ? (
+                <ThreeAtomDisplay shells={element.shells} color={CATEGORY_COLORS[element.category]} />
+              ) : (
+                <ElectronShellDiagram shells={element.shells} />
+              )}
             </div>
 
             <ReactivityIndicator shells={element.shells} electronegativity={element.electronegativity} />
