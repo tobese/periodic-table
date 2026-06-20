@@ -23,19 +23,22 @@ export default function ElementCell({ element, isSelected, onClick }: ElementCel
       `}
       style={{
         backgroundColor: isSelected ? bgColor : bgColor,
-        aspectRatio: '1',
-        border: isSelected ? '2px solid #1e293b' : '1px solid rgba(255,255,255,0.5)',
+        aspectRatio: '0.8',
+        border: isSelected ? '2px solid #1e293b' : '1px solid rgba(255,255,255,0.6)',
         outline: isSelected ? '3px solid #1e293b' : 'none',
         outlineOffset: '1px',
       }}
       onClick={() => onClick(element)}
       title={`${element.atomicNumber}. ${element.name} (${element.symbol})`}
     >
-      <span className="text-[10px] font-semibold text-slate-800 leading-none absolute top-[3px] left-[4px] opacity-80">
+      <span className="text-[9px] font-medium text-slate-800 leading-none absolute top-[2px] left-[3px] opacity-80">
         {element.atomicNumber}
       </span>
-      <span className="text-sm font-bold text-slate-900 leading-none mt-px">
+      <span className="text-xs font-bold text-slate-900 leading-none -mb-0.5">
         {element.symbol}
+      </span>
+      <span className="text-[7px] text-slate-700 leading-none opacity-70 truncate max-w-full px-0.5">
+        {element.name}
       </span>
     </button>
   )
