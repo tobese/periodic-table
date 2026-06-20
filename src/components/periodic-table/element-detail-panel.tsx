@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import type { ElementData } from '@/data/elements'
 import { CATEGORY_COLORS, CATEGORY_LABELS, SHELL_LABELS } from '@/data/elements'
 import ElectronShellDiagram from './electron-shell-diagram'
@@ -17,6 +17,16 @@ type ViewMode = '2d' | '3d'
 export default function ElementDetailPanel({ element, onClose }: ElementDetailPanelProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('3d')
 
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') onClose()
+  }, [onClose])
+
+  useEffect(() => {
+    if (!element) return
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [element, handleKeyDown])
+
   if (!element) return null
 
   const categoryColor = CATEGORY_COLORS[element.category]
@@ -25,10 +35,10 @@ export default function ElementDetailPanel({ element, onClose }: ElementDetailPa
   const shellConfig = element.shells.map((count, i) => `${SHELL_LABELS[i] ?? '?'} = ${count}`).join(', ')
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end">
-      <div className="absolute inset-0 bg-black/20" onClick={onClose} />
+    <div className="fixed inset-0 z-50 pointer-events-none">
+      <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
-      <div className="relative w-full max-w-xl bg-white shadow-2xl overflow-y-auto animate-slide-in">
+      <div className="relative w-full max-w-xl bg-white shadow-2xl overflow-y-auto animate-slide-in pointer-events-auto">
         <div className="sticky top-0 z-10 flex items-center justify-between px-5 py-3 border-b border-slate-200 bg-white">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-md flex items-center justify-center text-white font-bold text-lg" style={{ backgroundColor: categoryColor }}>
